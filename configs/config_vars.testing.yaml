@@ -4,4 +4,6 @@ logger-level: debug
 
 is_testing: true
 
+dbconnection: 'postgresql://testsuite@localhost:15433/users_manager_db'
+
 server-port: 8080
