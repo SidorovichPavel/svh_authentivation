@@ -76,3 +76,11 @@ format:
 .PHONY: gen-queries
 gen-queries:
 	@python3 scripts/generate_sql_queries.py $(GENERATE_SQL_QUERIES_FLAGS)
+
+.PHONY: cmake-debug
+cmake-debug:
+	cmake -B ./build_debug -DCMAKE_C_COMPILER=clang-16 -DCMAKE_CXX_COMPILER=clang++-16 -G Ninja
+
+.PHONY: run-testsuite
+run-testsuite:
+	build_debug/runtests-testsuite-service --service-logs-pretty --service-runner-mode -vvs tests
