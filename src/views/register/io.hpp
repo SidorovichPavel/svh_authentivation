@@ -1,22 +1,15 @@
 #pragma once
-#include <string>
-#include <uopenapi/http/response.hpp>
-#include <models/error_response.hpp>
-#include <models/auth.hpp>
+
+#include "models/identity.hpp"
 #include <boost/uuid/uuid.hpp>
+#include <models/auth.hpp>
+#include <models/error_response.hpp>
+#include <uopenapi/http/response.hpp>
 
-namespace views::Register{
+namespace views::Register {
 
-    struct ResponseBody{
-        boost::uuids::uuid token;
-    };
+using Request = model::identity::Request;
 
-    struct Response{
-        ResponseBody body;
-    };
-
-    using Request = models::auth::Request;
-
-    using Response200 = uopenapi::http::response<Response, 200>;
-    using Response400 = uopenapi::http::response<models::ErrorResponse, 400>;
-}
+using Response200 = uopenapi::http::response<model::identity::Response, 200>;
+using Response400 = uopenapi::http::response<model::ErrorResponse, 400>;
+} // namespace views::Register
