@@ -8,3 +8,6 @@
 
 # Build
 build*
+
+# third_party
+third_party*
