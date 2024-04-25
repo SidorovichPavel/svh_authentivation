@@ -6,7 +6,7 @@
 #include <uopenapi/reflective/requirements/requirements_field.hpp>
 #include <uopenapi/reflective/requirements/string/string_requirements.hpp>
 
-namespace models{
+namespace model{
     UOPENAPI_DECLARE_ENUM(TaskStatus, int, completed, incomplete);
 
     struct Task{
