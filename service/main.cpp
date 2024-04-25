@@ -21,8 +21,10 @@ int main(int argc, char* argv[]) {
             
     component_list.Append<uopenapi::components::schema_storage>();
     component_list.Append<uopenapi::components::schema_http_distributor>();
-    component_list.Append<userver::components::Postgres>("todo_db");
-    views::login::Append(component_list);
+    //component_list.Append<userver::components::Postgres>("todo_db");
+
+    //views::login::Append(component_list);
+    component_list.Append<userver::components::Postgres>("users_manager_db");
     views::Register::Append(component_list);
 
     return userver::utils::DaemonMain(argc, argv, component_list);
