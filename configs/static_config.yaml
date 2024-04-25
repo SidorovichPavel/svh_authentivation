@@ -50,15 +50,15 @@ components_manager:
             throttling_enabled: false
             url_trailing_slash: strict-match
 
-        login_handler:
-            path: /login
-            method: POST
-            task_processor: main-task-processor
+        #login_handler:
+        #    path: /login
+        #    method: POST
+        #    task_processor: main-task-processor
         register_handler:
             path: /register
             method: POST
             task_processor: main-task-processor
-        todo_db:
+        users_manager_db:
             dbconnection: $dbconnection
             blocking_task_processor: fs-task-processor
             dns_resolver: async
