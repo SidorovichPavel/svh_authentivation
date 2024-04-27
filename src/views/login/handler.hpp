@@ -1,5 +1,5 @@
 #pragma once
-#include "handler_fwd.hpp"
+
 #include "io.hpp"
 #include <uopenapi/all.hpp>
 #include <userver/storages/postgres/component.hpp>
@@ -13,9 +13,9 @@ namespace views::login{
         static constexpr std::string_view kName = "login_handler";
         handler(const userver::components::ComponentConfig& cfg,
                 const userver::components::ComponentContext& ctx) : base(cfg, ctx),
-                todo_db(ctx.FindComponent<userver::components::Postgres>("todo_db").GetCluster()){}
+                pg_cluster_(ctx.FindComponent<userver::components::Postgres>("todo_db").GetCluster()){}
         response handle(views::login::Request req) const override;
     private:
-        userver::storages::postgres::ClusterPtr todo_db;
+        userver::storages::postgres::ClusterPtr pg_cluster_;
     };
 }
