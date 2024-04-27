@@ -6,10 +6,10 @@
 #include <codegen/sql.hpp>
 #include <uopenapi/all.hpp>
 #include <userver/formats/parse/boost_uuid.hpp>
+#include <userver/formats/parse/common.hpp>
 #include <userver/formats/serialize/boost_uuid.hpp>
 #include <userver/storages/postgres/component.hpp>
 #include <userver/storages/postgres/postgres.hpp>
-#include <userver/formats/parse/common.hpp>
 
 namespace views::Register {
 
@@ -25,6 +25,8 @@ struct handler
 private:
   std::optional<boost::uuids::uuid>
   TryInsertUser(const model::identity::UserCredentials &ucreds) const;
+  std::string MakeToken(const boost::uuids::uuid &uuid,
+                        const model::identity::UserCredentials) const;
 
   userver::storages::postgres::ClusterPtr pg_cluster_;
 };

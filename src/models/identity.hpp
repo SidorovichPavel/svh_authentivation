@@ -13,9 +13,10 @@ namespace model::identity {
 struct UserCredentials {
   std::string first_name;
   std::string last_name;
+  std::int64_t age;
   std::string nickname;
   std::string password_hash;
-  std::int64_t age;
+  std::string salt;
 };
 
 struct Request {
