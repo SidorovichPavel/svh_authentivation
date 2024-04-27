@@ -15,16 +15,20 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(uopenapi)
 
+find_package(jwt-cpp CONFIG REQUIRED)
+
 CreateTrivialPart(
         name "src"
         path "/src"
-)
+        )
 
 target_link_libraries(${src_module} PUBLIC openapi-extension-userver_library)
 
 add_executable(service service/main.cpp)
 
 target_link_libraries(service PUBLIC ${src_module})
+
+target_link_libraries(service PUBLIC PRIVATE jwt-cpp::jwt-cpp)
 
 SET(USERVER_PYTHON "python3")
 userver_testsuite_add_simple()
