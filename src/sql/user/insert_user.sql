@@ -1,3 +1,15 @@
-INSERT INTO svh_users_manager.users (first_name, last_name, nickname, password_hash, age)
-VALUES ($1.first_name, $1.last_name, $1.nickname, $1.password_hash, $1.age)
-RETURNING id
+INSERT INTO SVH_USERS_MANAGER.USERS (
+    FIRST_NAME,
+    LAST_NAME,
+    AGE,
+    NICKNAME,
+    PASSWORD_HASH,
+    SALT
+) VALUES (
+    $1.FIRST_NAME,
+    $1.LAST_NAME,
+    $1.AGE,
+    $1.NICKNAME,
+    $2,
+    $3
+) RETURNING ID

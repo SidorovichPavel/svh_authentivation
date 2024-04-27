@@ -4,7 +4,7 @@
 
 #include <jwt-cpp/jwt.h>
 #include <userver/components/component_list.hpp>
-#include <userver/crypto/random.hpp>
+#include <userver/crypto/base64.hpp>
 
 namespace views::Register {
 
@@ -33,9 +33,18 @@ handler::response handler::handle(views::Register::Request req) const {
 
 std::optional<boost::uuids::uuid>
 handler::TryInsertUser(const model::identity::UserCredentials &ucreds) const {
+  constexpr size_t salt_size = 10u;
+  auto salt = userver::crypto::base64::Base64Encode(
+                  ucreds.nickname, userver::crypto::base64::Pad::kWith)
+                  .substr(0, salt_size);
+
+  auto salt_pass_hash = ucreds.password_hash + salt;
+  auto double_hashed_pass = userver::crypto::base64::Base64Encode(
+      salt_pass_hash, userver::crypto::base64::Pad::kWithout);
+
   auto pg_result = pg_cluster_->Execute(
       userver::storages::postgres::ClusterHostType::kMaster, sql::insert_user,
-      ucreds);
+      ucreds, double_hashed_pass, salt);
   return pg_result.AsOptionalSingleRow<boost::uuids::uuid>();
 }
 
