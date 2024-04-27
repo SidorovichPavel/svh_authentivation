@@ -41,11 +41,12 @@ CREATE TABLE svh_users_manager.users (
 DROP TYPE IF EXISTS svh_users_manager."UserCredentialsType" CASCADE;
 CREATE TYPE svh_users_manager."UserCredentialsType" AS
 (
- user_name text,
+ first_name text,
  last_name text,
+ age smallint,
  nickname text,
  password_hash text,
- age smallint
+ salt text
 );
 -- ddl-end --
 
@@ -80,3 +81,5 @@ ALTER TABLE svh_users_manager.permitions_to_users ADD CONSTRAINT permitions_fk F
 REFERENCES svh_users_manager.permitions (id) MATCH FULL
 ON DELETE SET NULL ON UPDATE CASCADE;
 -- ddl-end --
+
+
