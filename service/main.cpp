@@ -11,8 +11,6 @@
 #include <views/login/handler_fwd.hpp>
 #include <views/register/handler_fwd.hpp>
 
-#include "views/salt/handler_fwd.hpp"
-
 int main(int argc, char *argv[]) {
   auto component_list = userver::components::MinimalServerComponentList()
                             .Append<userver::server::handlers::Ping>()
