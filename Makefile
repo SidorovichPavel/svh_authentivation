@@ -79,7 +79,11 @@ gen-queries:
 
 .PHONY: cmake-debug
 cmake-debug:
-	cmake -B ./build_debug -DCMAKE_C_COMPILER=clang-16 -DCMAKE_CXX_COMPILER=clang++-16 -G Ninja
+	cmake -B build_debug -DCMAKE_C_COMPILER=clang-16 -DCMAKE_CXX_COMPILER=clang++-16 -G Ninja
+
+.PHONY: cmake-build-debug
+cmake-build-debug:
+	cmake --build build_debug
 
 .PHONY: run-testsuite
 run-testsuite:
