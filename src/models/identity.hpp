@@ -16,7 +16,6 @@ struct UserCredentials {
   std::int64_t age;
   std::string nickname;
   std::string password_hash;
-  std::string salt;
 };
 
 struct Request {

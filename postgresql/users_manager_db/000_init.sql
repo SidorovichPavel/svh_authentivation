@@ -29,7 +29,7 @@ CREATE TABLE svh_users_manager.users (
 	first_name text NOT NULL,
 	last_name text NOT NULL,
 	nickname text NOT NULL,
-	age smallint NOT NULL,
+	age bigint NOT NULL,
 	password_hash text NOT NULL,
 	salt text NOT NULL,
 	CONSTRAINT users_pk PRIMARY KEY (id),
@@ -43,10 +43,9 @@ CREATE TYPE svh_users_manager."UserCredentialsType" AS
 (
  first_name text,
  last_name text,
- age smallint,
+ age bigint,
  nickname text,
- password_hash text,
- salt text
+ password_hash text
 );
 -- ddl-end --
 
