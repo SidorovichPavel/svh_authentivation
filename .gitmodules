@@ -2,6 +2,3 @@
 	path = uopenapi
 	url = https://github.com/sabudilovskiy/userver-openapi-extension.git
 	branch = add_basic_ci
-[submodule "third_party/jwt"]
-	path = third_party/jwt
-	url = https://github.com/Thalhammer/jwt-cpp.git
