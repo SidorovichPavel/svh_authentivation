@@ -31,8 +31,8 @@ handler::response handler::handle(views::Register::Request req) const {
   }
 }
 
-std::optional<boost::uuids::uuid>
-handler::TryInsertUser(const model::identity::UserCredentials &ucreds) const {
+std::optional<boost::uuids::uuid> handler::TryInsertUser(
+    const model::identity::UserRegisterCredentials &ucreds) const {
   constexpr size_t salt_size = 10u;
   auto salt = userver::crypto::base64::Base64Encode(
                   ucreds.nickname, userver::crypto::base64::Pad::kWith)
@@ -50,7 +50,9 @@ handler::TryInsertUser(const model::identity::UserCredentials &ucreds) const {
 
 std::string
 handler::MakeToken(const boost::uuids::uuid &uuid,
-                   const model::identity::UserCredentials uc) const {
+                   const model::identity::UserRegisterCredentials uc) const {
+  auto secret = "json+web+" + uc.first_name;
+  std::shuffle(secret.begin(), secret.end(), std::random_device{});
   auto token =
       jwt::create()
           .set_type("JWS")
@@ -58,7 +60,7 @@ handler::MakeToken(const boost::uuids::uuid &uuid,
           .set_payload_claim("id", jwt::claim(boost::uuids::to_string(uuid)))
           .set_payload_claim("nickname", jwt::claim(uc.nickname))
           .set_payload_claim("age", jwt::claim(std::to_string(uc.age)))
-          .sign(jwt::algorithm::hs256{"secret"});
+          .sign(jwt::algorithm::hs256{secret});
   return std::string(token.c_str());
 }
 

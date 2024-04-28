@@ -24,9 +24,9 @@ struct handler
 
 private:
   std::optional<boost::uuids::uuid>
-  TryInsertUser(const model::identity::UserCredentials &ucreds) const;
+  TryInsertUser(const model::identity::UserRegisterCredentials &ucreds) const;
   std::string MakeToken(const boost::uuids::uuid &uuid,
-                        const model::identity::UserCredentials) const;
+                        const model::identity::UserRegisterCredentials) const;
 
   userver::storages::postgres::ClusterPtr pg_cluster_;
 };

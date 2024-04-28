@@ -10,7 +10,7 @@
 
 namespace model::identity {
 
-struct UserCredentials {
+struct UserRegisterCredentials {
   std::string first_name;
   std::string last_name;
   std::int64_t age;
@@ -19,7 +19,7 @@ struct UserCredentials {
 };
 
 struct Request {
-  UserCredentials body;
+  UserRegisterCredentials body;
 };
 
 struct ResponseBody {
@@ -37,7 +37,7 @@ UOPENAPI_SOURCE_TYPE(model::identity::Response, cors, header);
 
 namespace userver::storages::postgres::io {
 
-template <> struct CppToUserPg<model::identity::UserCredentials> {
+template <> struct CppToUserPg<model::identity::UserRegisterCredentials> {
   static constexpr DBTypeName postgres_name =
       "svh_users_manager.UserCredentialsType";
 };
