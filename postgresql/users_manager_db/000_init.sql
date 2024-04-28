@@ -81,4 +81,17 @@ REFERENCES svh_users_manager.permitions (id) MATCH FULL
 ON DELETE SET NULL ON UPDATE CASCADE;
 -- ddl-end --
 
+-- object: svh_users_manager."UserAuthCreditionsType" | type: TYPE --
+DROP TYPE IF EXISTS svh_users_manager."UserAuthCreditionsType" CASCADE;
+CREATE TYPE svh_users_manager."UserAuthCreditionsType" AS
+(
+ id uuid,
+ first_name text,
+ age bigint,
+ nickname text,
+ password_hash text,
+ salt text
+);
+-- ddl-end --
+
 
