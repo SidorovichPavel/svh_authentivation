@@ -2,8 +2,8 @@
 #include <boost/uuid/uuid.hpp>
 #include <string>
 
-#include "userver/storages/postgres/io/io_fwd.hpp"
-#include "userver/storages/postgres/io/pg_types.hpp"
+#include <userver/storages/postgres/io/io_fwd.hpp>
+#include <userver/storages/postgres/io/pg_types.hpp>
 
 namespace model::auth {
 

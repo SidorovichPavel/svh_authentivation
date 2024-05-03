@@ -1,7 +1,8 @@
 #include "handler.hpp"
 
-#include "../../codegen/sql.hpp"
+#include <codegen/sql.hpp>
 
+#include <boost/uuid/uuid.hpp>
 #include <jwt-cpp/jwt.h>
 #include <userver/components/component_list.hpp>
 #include <userver/crypto/base64.hpp>

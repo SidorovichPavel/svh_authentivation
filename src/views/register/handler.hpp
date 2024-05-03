@@ -1,9 +1,9 @@
 #pragma once
 
 #include "io.hpp"
-#include "models/identity.hpp"
 #include <boost/uuid/uuid.hpp>
 #include <codegen/sql.hpp>
+#include <models/identity.hpp>
 #include <uopenapi/all.hpp>
 #include <userver/formats/parse/boost_uuid.hpp>
 #include <userver/formats/parse/common.hpp>

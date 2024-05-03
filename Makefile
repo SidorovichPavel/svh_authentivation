@@ -65,9 +65,10 @@ find-c-compiler:
 
 .PHONY: format
 format:
-	python3.10 scripts/format_includes.py library boost uopenapi checks
-	find checks -name '*pp' -type f | xargs clang-format-17 -i
-	find library -name '*pp' -type f | xargs clang-format-17 -i
+	python3.10 scripts/format_includes.py src boost uopenapi userver codegen models
+	python3.10 scripts/format_includes.py service boost uopenapi userver codegen
+	find src -name '*pp' -type f | xargs clang-format-17 -i
+	find service -name '*pp' -type f | xargs clang-format-17 -i
 	make add-eol P=tests
 	make add-eol P=src
 	make add-eol P=.github

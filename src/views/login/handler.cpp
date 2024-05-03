@@ -46,7 +46,8 @@ handler::SelectAuthData(std::string username) const {
       userver::storages::postgres::ClusterHostType::kMaster, sql::select_auth,
       username);
 
-  return pg_result.AsOptionalSingleRow<model::auth::UserAuthCredentials>(userver::storages::postgres::kRowTag);
+  return pg_result.AsOptionalSingleRow<model::auth::UserAuthCredentials>(
+      userver::storages::postgres::kRowTag);
 }
 
 std::string

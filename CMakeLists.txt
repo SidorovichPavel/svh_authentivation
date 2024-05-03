@@ -11,7 +11,7 @@ include(FetchContent)
 FetchContent_Declare(
         uopenapi
         GIT_REPOSITORY https://github.com/sabudilovskiy/userver-openapi-extension
-        GIT_TAG "9e517b8f14b8ffd056eef82344b37729f29d0f49"
+        GIT_TAG "d4a2ddfc5df87883ee9dc6e72df6e13485e79836"
 )
 FetchContent_MakeAvailable(uopenapi)
 
