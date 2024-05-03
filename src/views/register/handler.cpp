@@ -51,7 +51,7 @@ std::optional<boost::uuids::uuid> handler::TryInsertUser(
 
 std::string
 handler::MakeToken(const boost::uuids::uuid &uuid,
-                   const model::identity::UserRegisterCredentials uc) const {
+                   const model::identity::UserRegisterCredentials& uc) const {
   auto secret = "json+web+" + uc.first_name;
   std::shuffle(secret.begin(), secret.end(), std::random_device{});
   auto token =

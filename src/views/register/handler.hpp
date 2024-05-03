@@ -26,7 +26,7 @@ private:
   std::optional<boost::uuids::uuid>
   TryInsertUser(const model::identity::UserRegisterCredentials &ucreds) const;
   std::string MakeToken(const boost::uuids::uuid &uuid,
-                        const model::identity::UserRegisterCredentials) const;
+                        const model::identity::UserRegisterCredentials& uc) const;
 
   userver::storages::postgres::ClusterPtr pg_cluster_;
 };
